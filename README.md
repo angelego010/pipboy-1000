@@ -1,14 +1,37 @@
 # PIP-BOY 1000 PROTOTYPE
 
-A build course for Gabe. One file, no build step, no network.
+**Live: https://angelego010.github.io/pipboy-1000/**
+
+A build course. One file, no build step, no network calls.
 
 ```
-index.html   the whole thing — course + journal + wiring sheet
+index.html   the whole thing — course + journal + wiring sheet + holotape
 fonts/       DotGothic16 + JetBrains Mono, local (same pair as the lab sheet)
-_spec/       the six agent specs it was generated from; not shipped
+_spec/       the six agent specs it was generated from; gitignored, not shipped
 ```
 
-Open by double-click. Everything lives in `localStorage` on that machine.
+Works offline after first load. Everything he writes lives in `localStorage`
+on that machine — nothing is uploaded, there is no account and no server that
+could receive it.
+
+## The holotape
+
+Because there is no server, a new phone starts empty. Section 7 ejects the whole
+page as one short code he pastes on the other device (or saves as a file).
+
+It carries **decisions, not furniture**: the 25 seeded bin rows and their prose
+are rebuilt from the file on load, so only the ones he has touched travel. A
+fresh tape is ~170 characters, a well-used one ~500 — short enough to paste into
+a message. Format `PB1000.1.<base64>.<checksum>`; the checksum exists because
+the failure that actually happens is a code cut short by a chat app.
+
+Loading replaces, never merges, and asks twice. Every rejection path says what
+is wrong in a full sentence — a control that fails silently gets reported as
+broken.
+
+The same split runs in `load()`: a seeded row's words belong to the file, only
+his decisions belong to the store, so a corrected line reaches someone who
+already opened the page.
 
 ## What it is
 
